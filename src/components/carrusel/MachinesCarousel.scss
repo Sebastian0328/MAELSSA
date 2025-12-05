@@ -2,7 +2,7 @@
 @use "../../styles/fonts" as *;
 
 .machines {
-  
+   overflow-x: hidden;
   padding: 3rem 1.5rem 4rem;
   font-family: $font-text;
 

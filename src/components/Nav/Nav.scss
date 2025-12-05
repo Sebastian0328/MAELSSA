@@ -132,6 +132,7 @@
 /* Botón burger */
 .burger {
   width: 32px;
+   z-index: 120;
   height: 26px;
   padding: 0;
   border: none;
@@ -145,7 +146,8 @@
     display: block;
     height: 3px;
     border-radius: 10px;
-    background-color: aliceblue;
+    background-color: #ffffff !important;
+    
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
