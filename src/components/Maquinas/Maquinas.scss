@@ -1,0 +1,41 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/fonts" as *;
+.maquinas {
+  background: #f9f9f9;
+  color: black;
+  font-family: $font-text;
+  padding: 4rem 1.5rem;
+
+  @include responsive(md) {
+    padding: 5rem 3rem;
+  }
+
+  @include responsive(xl) {
+    padding: 6rem 8rem;
+  }
+}
+.card{
+    background-color: #ededed;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    h2{
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+    button{
+        width: 20rem;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #ffffff;
+        color: #000000;
+        border: none;   
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+}

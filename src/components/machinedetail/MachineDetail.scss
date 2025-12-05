@@ -1,0 +1,206 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/fonts" as *;
+
+.machine-detail__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 4, 12, 0.82);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+.machine-detail__panel {
+  width: 100%;
+  max-width: 980px;
+  max-height: 90vh;
+  background: radial-gradient(circle at top left, #020617, #050816 60%);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.6);
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  color: #f5f5f5;
+  font-family: $font-text;
+  overflow: hidden;
+
+  @include responsive(md) {
+    padding: 1.7rem 2rem 2rem;
+  }
+
+  // scroll interno suave si el contenido crece
+  .machine-detail__body {
+    overflow-y: auto;
+  }
+}
+
+.machine-detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+
+    @include responsive(md) {
+      font-size: 1.7rem;
+    }
+  }
+}
+
+.machine-detail__subtitle {
+  font-size: 0.9rem;
+  color: #c7cad4;
+}
+
+.machine-detail__close {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.1rem 0.2rem;
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
+  }
+}
+
+/* ============================
+   BODY: layout responsive
+   ============================ */
+.machine-detail__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 0.3rem; // evita scrollbar encima del texto
+
+  @include responsive(md) {
+    flex-direction: row;
+    gap: 1.8rem;
+  }
+}
+
+/* Columna imagen */
+.machine-detail__media {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  @include responsive(md) {
+    flex: 0 0 40%;
+  }
+}
+
+.machine-detail__image {
+  width: 100%;
+  border-radius: 14px;
+  background: #020617;
+  object-fit: contain;       // 🔵 respeta proporción de la máquina
+  padding: 0.8rem;
+  max-height: 320px;
+
+  @include responsive(md) {
+    max-height: 360px;
+  }
+}
+
+/* Placeholder por si alguna máquina no tiene imagen */
+.machine-detail__image-placeholder {
+  width: 100%;
+  height: 220px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 30% 20%, #0003ff, #050816);
+}
+
+/* Etiqueta pequeña bajo la imagen */
+.machine-detail__tag {
+  align-self: flex-start;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(0, 51, 255, 0.16);
+  color: #aec4ff;
+  font-size: 0.8rem;
+}
+
+/* Columna info */
+.machine-detail__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.machine-detail__description {
+  font-size: 0.95rem;
+  color: #dde2f3;
+  line-height: 1.5;
+}
+
+/* Sección extra (lista) */
+.machine-detail__section {
+  h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 1rem;
+  }
+
+  li {
+    font-size: 0.9rem;
+    color: #c7cad4;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Acciones */
+.machine-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.machine-detail__btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.machine-detail__btn--primary {
+  background: #0003ff;
+  color: #ffffff;
+  border-color: #0003ff;
+
+  &:hover {
+    background: #0022aa;
+    border-color: #0022aa;
+  }
+}
+
+.machine-detail__btn--ghost {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}

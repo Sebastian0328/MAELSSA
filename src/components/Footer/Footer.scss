@@ -1,0 +1,197 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/fonts" as *;
+
+$footer-bg: #000000;
+$footer-blue: #0033ff;
+$footer-text: #ffffff;
+$footer-muted: #b3b3b3;
+
+.footer {
+  background: $footer-bg;
+  color: $footer-text;
+  font-family: $font-text;
+  padding: 3rem 1.5rem 2.5rem;
+
+  @include responsive(md) {
+    padding: 4rem 3rem 2.5rem;
+  }
+
+  @include responsive(xl) {
+    padding-inline: 6rem;
+  }
+}
+
+/* ============================
+   BLOQUE SUPERIOR
+   ============================ */
+.footer__top {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+
+  @include responsive(lg) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+}
+
+/* Marca */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+
+  @include responsive(md) {
+    align-items: flex-start;
+  }
+}
+
+.footer__logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.footer__brand-name {
+  font-size: 1.4rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* CTAs grandes derecha */
+.footer__cta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Fila CTA */
+.footer__cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+
+  h2 {
+    margin: 0;
+    font-size: 2rem;
+    text-transform: uppercase;
+
+    @include responsive(md) {
+      font-size: 2.4rem;
+    }
+
+    @include responsive(lg) {
+      font-size: 2.8rem;
+    }
+  }
+
+  @include responsive(md) {
+    padding-bottom: 1.3rem;
+  }
+}
+
+/* Variante azul superior */
+.footer__cta-row--primary {
+  border-color: $footer-blue;
+
+  h2 {
+    color: $footer-blue;
+  }
+}
+
+/* Variante blanca inferior */
+.footer__cta-row--secondary {
+  border-color: #e5e5e5;
+
+  h2 {
+    color: $footer-text;
+  }
+}
+
+/* Tag pequeño encima del título */
+.footer__cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer__cta-tag {
+  font-size: 0.85rem;
+  text-transform: none;
+  color: $footer-text;
+
+  &--primary {
+    color: $footer-blue;
+    font-weight: 600;
+  }
+}
+
+/* Flecha */
+.footer__cta-arrow {
+  background: transparent;
+  border: none;
+  color: $footer-text;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: transform 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    transform: translateX(6px);
+  }
+}
+
+.footer__cta-arrow--primary {
+  color: $footer-blue;
+}
+
+/* ============================
+   BLOQUE INFERIOR
+   ============================ */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+/* Columnas */
+.footer__columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  margin-bottom: 2rem;
+
+  @include responsive(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.footer__column {
+  h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: $footer-muted;
+  }
+}
+
+/* Copy */
+.footer__copy {
+  font-size: 0.8rem;
+  color: $footer-muted;
+  text-align: center;
+  margin: 0;
+}

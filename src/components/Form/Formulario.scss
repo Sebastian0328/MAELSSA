@@ -1,0 +1,304 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/fonts" as *;
+
+/* =========================================================
+   SECCIÓN: FORMULARIO CON VIDEO DE FONDO
+   ========================================================= */
+.Formulario {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;       // 💙 Permite centrar verticalmente
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; // CENTRA todo verticalmente en móvil y escritorio
+  gap: 2rem;
+
+  padding: 1.5rem 1.5rem;
+  background: #000;
+
+  /* Escritorio: texto y formulario en fila */
+  @include responsive(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 4rem 3rem;
+  }
+
+  @include responsive(xl) {
+    padding-inline: 6rem;
+  }
+}
+
+/* =========================================================
+   VIDEO DE FONDO
+   ========================================================= */
+.video-fondo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* OSCURECEDOR */
+.Formulario::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.9) 60%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Contenido encima del video */
+.Formulario > .text,
+.Formulario > .maintenance-form {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   BLOQUE DE TEXTO CENTRADO
+   ========================================================= */
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     // 💙 Centro horizontal
+  justify-content: center; // 💙 Centro vertical
+  text-align: center;
+
+  color: #fff;
+  font-family: $font-title;
+  padding: 1rem 0;
+
+  h2 {
+    font-size: 4rem;
+
+  }
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  @include responsive(md) {
+    align-items: center;  // sigue centrado en desktop
+    text-align: center;
+    margin: 0;
+     h2 {
+    font-size: 2rem;
+
+  }
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  }
+  @include responsive(lg) {
+    align-items: center;  // sigue centrado en desktop
+    text-align: center;
+    margin: 0;
+     h2 {
+    font-size: 4rem;
+
+  }
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+  }
+  }
+}
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+.maintenance-form {
+  background: #0033ff;
+  border-radius: 16px;
+  padding: 1.8rem 1.6rem 2rem;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: $font-text;
+  max-width: 720px;
+  width: 100%;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+
+  @include responsive(md) {
+    padding: 2rem 2rem 2.3rem;
+  }
+}
+
+.maintenance-form__title {
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.maintenance-form__subtitle {
+  font-size: 0.9rem;
+  color: #d0d4e0;
+  margin-bottom: 1.4rem;
+}
+
+.maintenance-form__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem 1.4rem;
+
+  @include responsive(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* CAMPOS */
+.maintenance-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+
+  label {
+    font-weight: 500;
+  }
+
+  input,
+  select,
+  textarea {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: floralwhite;
+    padding: 0.6rem 0.75rem;
+    color: #000;
+    font-size: 0.9rem;
+
+    &:focus {
+      border-color: #0003ff;
+      box-shadow: 0 0 0 1px rgba(0, 3, 255, 0.4);
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+}
+
+.maintenance-form__field--full {
+  margin-top: 0.8rem;
+  grid-column: 1 / -1;
+}
+
+/* ERRORES */
+.maintenance-form__error {
+  font-size: 0.78rem;
+  color: #ff6b81;
+}
+
+/* BOTÓN */
+.maintenance-form__submit {
+  margin-top: 1.4rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  background: black;
+  color: #fff;
+  border: none;
+  font-size: 0.95rem;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  &:hover:enabled {
+    background: #0022aa;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+/* AVISO */
+.maintenance-form__success {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: #7fffd4;
+}
+
+/* =========================================================
+   INPUT DE TELÉFONO RESPONSIVE
+   ========================================================= */
+.phone-input {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+
+  /* Móviles – se apilan */
+  @include responsive(xs) {
+    flex-direction: column;
+  }
+
+  @include responsive(sm) {
+    flex-direction: column;
+  }
+
+  /* Tablet/desktop – en fila */
+  @include responsive(md) {
+    flex-direction: row;
+  }
+
+  .phone-input__select {
+    width: 100%;
+    padding: 0.55rem;
+    border-radius: 10px;
+    background: floralwhite;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #333;
+
+    font-size: 0.9rem;
+
+    @include responsive(md) {
+      width: 80px;
+    }
+    @include responsive(lg) {
+      width: 100px;
+    }
+
+    &:focus {
+      border-color: #0003ff;
+      box-shadow: 0 0 0 1px rgba(0, 3, 255, 0.4);
+    }
+  }
+
+  .phone-input__number {
+    flex: 1;
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 10px;
+    background: floralwhite;
+    color: #000;
+
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.9rem;
+
+    &:focus {
+      border-color: #0003ff;
+      box-shadow: 0 0 0 1px rgba(0, 3, 255, 0.4);
+    }
+  }
+}
+/* =========================================================
+   FIN FORMULARIO
+   ========================================================= */

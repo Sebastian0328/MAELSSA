@@ -1,0 +1,260 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/fonts" as *;
+
+.machines {
+  
+  padding: 3rem 1.5rem 4rem;
+  font-family: $font-text;
+
+  @include responsive(md) {
+    padding: 4rem 3rem 5rem;
+  }
+
+  @include responsive(xl) {
+    padding-inline: 6rem;
+  }
+}
+
+.machines__header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+
+    @include responsive(md) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+}
+
+.machines__carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+
+  @include responsive(md) {
+    gap: 1rem;
+  }
+}
+
+/* Flechas */
+.machines__arrow {
+  background: #0003ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    background: #0022aa;
+    transform: translateY(-2px);
+  }
+
+  @include responsive(sm) {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+
+  @include responsive(md) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+  }
+  @include responsive(lg) {
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    font-size: 1.8rem;
+  }
+}
+
+/* Contenedor de las 3 cards visibles */
+.machines__viewport {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 100%;
+  width: 100%;
+  overflow: visible;
+
+  @include responsive(md) {
+    gap: 1rem;
+    max-width: 980px;
+    margin-inline: auto;
+  }
+}
+
+/* CARD base */
+.machines__card {
+  background: #000;
+  color: #ffffff;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  /* En móvil: quepa bien, centro ~80% del ancho */
+  flex: 0 0 70%;
+  max-width: 100%;
+
+  @include responsive(sm) {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+  /* En tablet/desktop: 3 columnas más compactas */
+  @include responsive(md) {
+    flex: 0 0 32%;
+    max-width: 32%;
+  }
+
+  @include responsive(lg) {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
+/* Central más protagonista (ya la resalta Framer, aquí solo sombra extra) */
+.machines__card--current {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagen */
+.machines__image-placeholder {
+  position: relative;
+  width: 100%;
+  padding-top: 65%; // altura en móvil
+
+  @include responsive(md) {
+    padding-top: 60%;
+  }
+
+  @include responsive(lg) {
+    padding-top: 58%;
+  }
+
+  overflow: hidden;
+}
+
+.machines__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Degradado para legibilidad del texto */
+.machines__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.8)
+  );
+  pointer-events: none;
+}
+
+/* Texto + botones */
+.machines__card-body {
+  position: relative;
+  padding: 1rem 1.1rem 1.2rem;
+
+  @include responsive(md) {
+    padding: 1.1rem 1.2rem 1.3rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+
+    @include responsive(sm) {
+      font-size: 1.05rem;
+    }
+
+    @include responsive(md) {
+      font-size: 1.15rem;
+    }
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: #d0d4e0;
+    margin-bottom: 0.8rem;
+    max-height: 4.5rem;
+    overflow: hidden;
+
+    @include responsive(md) {
+      font-size: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+  }
+}
+
+.machines__card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  @include responsive(md) {
+    gap: 0.5rem;
+  }
+}
+
+.machines__btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  @include responsive(md) {
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+.machines__btn--primary {
+  background: #0003ff;
+  color: #ffffff;
+  border-color: #0003ff;
+
+  &:hover {
+    background: #0022aa;
+    border-color: #0022aa;
+  }
+}
+
+.machines__btn--ghost {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}

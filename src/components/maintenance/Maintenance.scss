@@ -1,0 +1,276 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/fonts" as *;
+
+.maintenance {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem 4.5rem;
+  color: #fff;
+  font-family: $font-title;
+
+  // Pantallas medianas en adelante: hero alto
+//   @include responsive(md) {
+//     height: 95vh;
+//     padding: 3rem 2rem;
+//   }
+}
+
+.texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  text-shadow: 0 2px 6px rgba(255, 255, 255, 0.35);
+  @include responsive(md) {
+    justify-content: center;
+  }
+}
+
+/* 🎥 VIDEO COMPLETO DE FONDO */
+
+
+
+
+/* CONTENIDO ENCIMA DEL VIDEO */
+.maintenance__content {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+
+  // mobile: centrado y sin sangría
+  text-align: center;
+  align-items: center;
+
+  @include responsive(md) {
+    max-width: 100%;
+     // tu diseño escritorio
+    gap: 3rem;
+    text-align: left;
+    align-items: center;
+  }
+
+  @include responsive(lg) {
+    justify-content: center;
+  }
+}
+
+.maintenance__eyebrow {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+
+  @include responsive(md) {
+    font-size: 4rem;
+  }
+  @include responsive(lg) {
+    font-size: 5rem;
+  }
+}
+
+.maintenance__title {
+  font-size: 2.2rem;
+
+  @include responsive(md) {
+    font-size: 3.2rem;
+  }
+
+  @include responsive(lg) {
+    font-size: 5rem;
+  }
+}
+
+/* CHIPS */
+
+.maintenance__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  width: 100%;
+
+  @include responsive(md) {
+    gap: 2.5rem;
+  }
+
+  @include responsive(lg) {
+    gap: 3rem;
+  }
+}
+
+.maintenance__chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+  min-height: 140px;
+  width: 100%;
+  max-width: 320px;
+
+  /* fondo azul con degradado */
+  background: radial-gradient(
+    circle at 0% 0%,
+    #000000 0%,
+    #042a7d 50%,
+    #0037ff 100%
+  );
+
+  color: #ffffff;
+  font-family: $font-text;
+  overflow: hidden;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+
+  /* pequeño borde para que se vea más “card” */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  /* efecto hover */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.6);
+  }
+
+  @include responsive(md) {
+    max-width: 360px;
+    min-height: 150px;
+  }
+
+  @include responsive(lg) {
+    max-width: 380px;
+  }
+}
+
+/* Texto */
+.maintenance__chip-text {
+  z-index: 1;
+  max-width: 70%;
+  padding: 1rem;
+
+  h3 {
+    text-align: left;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+
+    @include responsive(md) {
+      font-size: 1.3rem;
+    }
+  }
+
+  p {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: #e2e6ff;
+  }
+
+  // en móvil, centrado si quieres
+  @include responsive(xs) {
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+/* Icono */
+.maintenance__chip-icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 0.8rem;
+
+  img {
+    display: block;
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+
+    @include responsive(md) {
+      width: 90px;
+    }
+
+    @include responsive(lg) {
+      width: 100px;
+    }
+  }
+}
+
+/* brillo suave al fondo detrás del icono */
+.maintenance__chip::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 162, 255, 0.9), transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* CONTENEDOR DEL BOTÓN */
+.button {
+  width: 100%;
+  margin-top: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  @include responsive(md) {
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  @include responsive(lg) {
+    justify-content: space-around;
+    gap: 10rem;
+  }
+
+  @include responsive(xl) {
+    gap: 14rem;
+  }
+}
+
+.maintenance__cta {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border: 1px solid white;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #0022aa;
+    transform: translateY(-2px);
+  }
+}
+
+.maintenance__label {
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.85;
+  font-size: 1.1rem;
+
+  @include responsive(sm) {
+    font-size: 0.95rem;
+  }
+}

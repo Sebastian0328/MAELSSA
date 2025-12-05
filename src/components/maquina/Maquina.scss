@@ -1,0 +1,225 @@
+@use "../../styles/breakpoints" as *;
+@use "../../styles/fonts" as *;
+
+.maquina {
+  background: #050816; // fondo oscuro industrial (ajustable)
+  color: #f5f5f5;
+  font-family: $font-text;
+  padding: 4rem 1.5rem;
+   // para asegurar scroll suficiente
+
+  @include responsive(md) {
+    padding: 5rem 3rem;
+  }
+
+  @include responsive(xl) {
+    padding: 6rem 8rem;
+  }
+}
+
+.maquina__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include responsive(md) {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: flex-start;
+    gap: 2.5rem;
+    min-height: 90vh;
+  }
+
+  @include responsive(lg) {
+    gap: 3.5rem;
+  }
+}
+
+.maquina__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+
+  @include responsive(md) {
+    justify-content: flex-start; // ya NO los centramos verticalmente
+  }
+}
+
+
+/* En móvil: todo centrado y apilado */
+/* En móvil: todo centrado y apilado */
+.maquina__col--left,
+.maquina__col--right {
+  display: flex;
+  align-items: center;
+  align-content: center;
+
+  @include responsive(md) {
+    margin-top: 3rem; // 🔽 las bajamos un poco respecto al título
+  }
+
+  @include responsive(lg) {
+    margin-top: 4rem; // en pantallas grandes, un pelín más
+  }
+}
+
+.botones_maquina {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  
+  button {
+    background-color: #0003ff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0000cc;
+    }
+  }
+}
+/* Bloques de texto laterales */
+.maquina__block {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+
+    @include responsive(md) {
+      font-size: 1.15rem;
+    }
+
+    @include responsive(lg) {
+      font-size: 1.25rem;
+    }
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    @include responsive(md) {
+      font-size: 0.95rem;
+    }
+
+    @include responsive(lg) {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Columna central: imagen fija al hacer scroll */
+.maquina__col--center {
+  @include responsive(md) {
+    position: relative;
+  }
+}
+
+.maquina__image-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem; 
+
+    @include responsive(md) {
+      
+      font-size: 2.2rem;
+    }
+
+    @include responsive(lg) {
+      font-size: 2.6rem;
+    }
+  }
+
+  .maquina__subtitle {
+    font-size: 0.9rem;
+    color: #c7cad4;
+
+    @include responsive(md) {
+      font-size: 1rem;
+    }
+  }
+
+  .maquina__image {
+    max-width: 260px;
+    width: 100%;
+    
+
+    @include responsive(sm) {
+      max-width: 320px;
+    }
+
+    @include responsive(md) {
+      max-width: 360px;
+    }
+
+    @include responsive(lg) {
+      max-width: 420px;
+    }
+  }
+
+  /* 💡 Sticky más “realista”: se fija bajo el nav, no al centro */
+  @include responsive(md) {
+    position: sticky;
+    top: 120px;   // aprox. debajo del nav / header
+    transform: none;
+  }
+}
+/* Animación suave de entrada */
+.maquina__block {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+
+  opacity: 0;
+  transform: translateY(40px);
+
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+
+    @include responsive(md) {
+      font-size: 1.15rem;
+    }
+
+    @include responsive(lg) {
+      font-size: 1.25rem;
+    }
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    @include responsive(md) {
+      font-size: 0.95rem;
+    }
+
+    @include responsive(lg) {
+      font-size: 1rem;
+    }
+  }
+}
+
+

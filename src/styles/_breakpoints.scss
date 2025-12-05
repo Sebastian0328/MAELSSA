@@ -1,0 +1,24 @@
+// 🌈 Breakpoints desde móviles pequeños hasta televisores
+
+$breakpoints: (
+  xs: 320px,   // Móviles muy pequeños
+  sm: 480px,   // Móviles estándar
+  md: 768px,   // Tablets vertical
+  lg: 1024px,  // Tablets horizontal / laptops
+  xl: 1280px,  // Desktop
+  xxl: 1440px, // Desktop grande
+  tv: 1920px,  // Televisores o pantallas 4K básicas
+);
+
+// 🎛️ Mixin para usarlos rápido
+@mixin responsive($size) {
+  $width: map-get($breakpoints, $size);
+
+  @if $width {
+    @media (min-width: $width) {
+      @content;
+    }
+  } @else {
+    @warn "⚠️ Breakpoint #{$size} no existe en el mapa.";
+  }
+}
