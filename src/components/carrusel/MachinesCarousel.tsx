@@ -115,7 +115,6 @@ function MachinesCarousel({ onSelectMachine }: MachinesCarouselProps) {
         {/* Viewport animado lateralmente + swipe */}
         <motion.div
           className="machines__viewport"
-          key={index}
           initial={{ x: direction > 0 ? 60 : -60, opacity: 0.95 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
@@ -163,6 +162,7 @@ function MachinesCarousel({ onSelectMachine }: MachinesCarouselProps) {
                       src={machine.image}
                       alt={machine.title}
                       loading="lazy"
+                       decoding="async"
                       className="machines__image"
                     />
                   )}

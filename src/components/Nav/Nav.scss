@@ -131,30 +131,30 @@
 
 /* Botón burger */
 .burger {
+  position: relative;
+  z-index: 200;               // bien por encima de todo
   width: 32px;
-   z-index: 120;
-  height: 26px;
+  height: 32px;
   padding: 0;
   border: none;
-  background: transparent;
+  background: transparent;    // 🔵 sin fondo
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-
-  span {
-    display: block;
-    height: 3px;
-    border-radius: 10px;
-    background-color: #ffffff !important;
-    
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
 
   @include responsive(md) {
     display: none; // en desktop desaparece
   }
 }
+
+.burger__icon {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;             // las líneas del SVG usan currentColor
+}
+
+
 
 /* Opcional: animación del icono burger cuando el menú está abierto */
 .barra--open {
